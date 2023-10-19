@@ -1,4 +1,4 @@
-name: Rustlings Tests
+name: SolidityLings_Security Tests
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
           components: rustfmt
       - uses: DavidAnson/markdownlint-cli2-action@v9
         with:
-          globs: "soliditylings_security/exercises/**/*.md"
+          globs: "exercises/**/*.md"
       - name: Run cargo fmt
         run: |
           cargo fmt --all -- --check
