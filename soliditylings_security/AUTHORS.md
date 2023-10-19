@@ -1,6 +1,14 @@
-## Authors
+## SolidityLings-Security Authors
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="12.5%"><a href="https://links.alysia.tech"><img src="https://avatars2.githubusercontent.com/u/5726361?v=4?s=100" width="100px;" alt="Alysia"/><br /><sub><b>Alysia</b></sub></a><br /><a href="https://github.com/alysiahuggins/soliditylings_security/commits?author=alysiahuggins" title="Code">💻</a> <a href="https://web3devnet.substack.com/" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
+</table>
 
-This file lists the people that have contributed to this project.
+## Rustlings Authors
+Below lists the people that have contributed to the original Rustlings Project project.
 
 Excluded from this list are @carols10cents and @diannasoreil, the principal
 authors.
