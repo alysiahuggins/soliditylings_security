@@ -19,7 +19,7 @@ jobs:
           components: rustfmt
       - uses: DavidAnson/markdownlint-cli2-action@v9
         with:
-          globs: "exercises/**/*.md"
+          globs: "soliditylings_security/exercises/**/*.md"
       - name: Run cargo fmt
         run: |
           cargo fmt --all -- --check

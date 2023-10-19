@@ -8,7 +8,7 @@ authors = [
   "Carol (Nichols || Goulding) <carol.nichols@gmail.com>",
 ]
 
-edition = "2023"
+edition = "2021"
 
 [dependencies]
 indicatif = "0.17.6"

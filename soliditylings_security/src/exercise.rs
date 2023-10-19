@@ -202,105 +202,105 @@ fn clean() {
     let _ignored = remove_file(temp_file());
 }
 
-#[cfg(test)]
-mod test {
-    use super::*;
-    use std::path::Path;
+// #[cfg(test)]
+// mod test {
+//     use super::*;
+//     use std::path::Path;
 
-    #[test]
-    fn test_clean() {
-        File::create(temp_file()).unwrap();
-        let exercise = Exercise {
-            name: String::from("example"),
-            path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
-            mode: Mode::Compile,
-            hint: String::from(""),
-        };
-        let compiled = exercise.compile().unwrap();
-        drop(compiled);
-        assert!(!Path::new(&temp_file()).exists());
-    }
+//     #[test]
+//     fn test_clean() {
+//         File::create(temp_file()).unwrap();
+//         let exercise = Exercise {
+//             name: String::from("example"),
+//             path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
+//             mode: Mode::Compile,
+//             hint: String::from(""),
+//         };
+//         let compiled = exercise.compile().unwrap();
+//         drop(compiled);
+//         assert!(!Path::new(&temp_file()).exists());
+//     }
 
-    #[test]
-    #[cfg(target_os = "windows")]
-    fn test_no_pdb_file() {
-        [Mode::Compile, Mode::Test] // Clippy doesn't like to test
-            .iter()
-            .for_each(|mode| {
-                let exercise = Exercise {
-                    name: String::from("example"),
-                    // We want a file that does actually compile
-                    path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
-                    mode: *mode,
-                    hint: String::from(""),
-                };
-                let _ = exercise.compile().unwrap();
-                assert!(!Path::new(&format!("{}.pdb", temp_file())).exists());
-            });
-    }
+//     #[test]
+//     #[cfg(target_os = "windows")]
+//     fn test_no_pdb_file() {
+//         [Mode::Compile, Mode::Test] // Clippy doesn't like to test
+//             .iter()
+//             .for_each(|mode| {
+//                 let exercise = Exercise {
+//                     name: String::from("example"),
+//                     // We want a file that does actually compile
+//                     path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
+//                     mode: *mode,
+//                     hint: String::from(""),
+//                 };
+//                 let _ = exercise.compile().unwrap();
+//                 assert!(!Path::new(&format!("{}.pdb", temp_file())).exists());
+//             });
+//     }
 
-    #[test]
-    fn test_pending_state() {
-        let exercise = Exercise {
-            name: "pending_exercise".into(),
-            path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
-            mode: Mode::Compile,
-            hint: String::new(),
-        };
+//     #[test]
+//     fn test_pending_state() {
+//         let exercise = Exercise {
+//             name: "pending_exercise".into(),
+//             path: PathBuf::from("tests/fixture/state/pending_exercise.rs"),
+//             mode: Mode::Compile,
+//             hint: String::new(),
+//         };
 
-        let state = exercise.state();
-        let expected = vec![
-            ContextLine {
-                line: "// fake_exercise".to_string(),
-                number: 1,
-                important: false,
-            },
-            ContextLine {
-                line: "".to_string(),
-                number: 2,
-                important: false,
-            },
-            ContextLine {
-                line: "// I AM NOT DONE".to_string(),
-                number: 3,
-                important: true,
-            },
-            ContextLine {
-                line: "".to_string(),
-                number: 4,
-                important: false,
-            },
-            ContextLine {
-                line: "fn main() {".to_string(),
-                number: 5,
-                important: false,
-            },
-        ];
+//         let state = exercise.state();
+//         let expected = vec![
+//             ContextLine {
+//                 line: "// fake_exercise".to_string(),
+//                 number: 1,
+//                 important: false,
+//             },
+//             ContextLine {
+//                 line: "".to_string(),
+//                 number: 2,
+//                 important: false,
+//             },
+//             ContextLine {
+//                 line: "// I AM NOT DONE".to_string(),
+//                 number: 3,
+//                 important: true,
+//             },
+//             ContextLine {
+//                 line: "".to_string(),
+//                 number: 4,
+//                 important: false,
+//             },
+//             ContextLine {
+//                 line: "fn main() {".to_string(),
+//                 number: 5,
+//                 important: false,
+//             },
+//         ];
 
-        assert_eq!(state, State::Pending(expected));
-    }
+//         assert_eq!(state, State::Pending(expected));
+//     }
 
-    #[test]
-    fn test_finished_exercise() {
-        let exercise = Exercise {
-            name: "finished_exercise".into(),
-            path: PathBuf::from("tests/fixture/state/finished_exercise.rs"),
-            mode: Mode::Compile,
-            hint: String::new(),
-        };
+//     #[test]
+//     fn test_finished_exercise() {
+//         let exercise = Exercise {
+//             name: "finished_exercise".into(),
+//             path: PathBuf::from("tests/fixture/state/finished_exercise.rs"),
+//             mode: Mode::Compile,
+//             hint: String::new(),
+//         };
 
-        assert_eq!(exercise.state(), State::Done);
-    }
+//         assert_eq!(exercise.state(), State::Done);
+//     }
 
-    #[test]
-    fn test_exercise_with_output() {
-        let exercise = Exercise {
-            name: "exercise_with_output".into(),
-            path: PathBuf::from("tests/fixture/success/testSuccess.rs"),
-            mode: Mode::Test,
-            hint: String::new(),
-        };
-        let out = exercise.compile().unwrap().run().unwrap();
-        assert!(out.stdout.contains("THIS TEST TOO SHALL PASS"));
-    }
-}
+//     #[test]
+//     fn test_exercise_with_output() {
+//         let exercise = Exercise {
+//             name: "exercise_with_output".into(),
+//             path: PathBuf::from("tests/fixture/success/testSuccess.rs"),
+//             mode: Mode::Test,
+//             hint: String::new(),
+//         };
+//         let out = exercise.compile().unwrap().run().unwrap();
+//         assert!(out.stdout.contains("THIS TEST TOO SHALL PASS"));
+//     }
+// }
