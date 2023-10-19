@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.19;
+//I AM NOT DONE
 contract Reentrancy1{ 
     mapping (address=>uint256) public balances;
     
@@ -11,10 +12,11 @@ contract Reentrancy1{
     function withdraw() public{
         uint256 bal = balances[msg.sender];
         require(bal>0, "the user did not deposit that amount in this contract");
-        balances[msg.sender] = 0;
 
         (bool sent, ) = msg.sender.call{value: bal}("");
-       
+
+        balances[msg.sender] = 0;
+
         require(sent, "Failed to send Ether");
 
     }

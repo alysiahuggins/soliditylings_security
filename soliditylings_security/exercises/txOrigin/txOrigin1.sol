@@ -1,9 +1,7 @@
-pragma solidity 0.8.19;
-import "forge-std/console.sol";
-
 //SPDX-License-Identifier: UNLICENSED
+pragma solidity 0.8.19;
 
-// I AM NOT DONE
+//I AM NOT DONE
 contract TxOrigin1{
     mapping(address => uint256) public balances;
 
@@ -16,8 +14,8 @@ contract TxOrigin1{
     }
 
     function withdrawTo(address recipient, uint256 amount) public {
-        require(balances[msg.sender] >= amount, "Insufficient balance");
-        balances[msg.sender] -= amount;
+        require(balances[tx.origin] >= amount, "Insufficient balance");
+        balances[tx.origin] -= amount;
         (bool sent, ) = recipient.call{value: amount}("");
         require(sent, "Failed to send Ether");
     }
