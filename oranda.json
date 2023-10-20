@@ -1,0 +1,17 @@
+{
+  "project": {
+    "homepage": "https://github.com/alysiahuggins/soliditylings_security",
+    "repository": "https://github.com/alysiahuggins/soliditylings_security"
+  },
+  "components": {
+    "artifacts": {
+      "auto": true,
+      "package_managers": {
+        "preferred": {
+          "macos/linux/unix": "curl -L https://raw.githubusercontent.com/alysiahuggins/soliditylings_security/main/install.sh | bash",
+          "windows": "Start-BitsTransfer -Source https://raw.githubusercontent.com/alysiahuggins/soliditylings_security/main/install.ps1 -Destination $env:TMP/install_soliditylings.ps1; Unblock-File $env:TMP/install_soliditylings.ps1; Invoke-Expression $env:TMP/install_soliditylings.ps1"
+        }
+      }
+    }
+  }
+}
