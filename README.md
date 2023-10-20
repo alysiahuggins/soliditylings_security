@@ -1,6 +1,6 @@
 <div class="oranda-hide">
 
-# Soliditylings 🦀❤️
+# Soliditylings ❤️
 
 </div>
 
