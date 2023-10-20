@@ -1,1 +1,1 @@
-*.js linguist-language=Rust
+*.sol linguist-detectable=false
