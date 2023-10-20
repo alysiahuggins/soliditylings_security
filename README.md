@@ -11,6 +11,12 @@ For a first-time Solidity learner, there are several other resources:
 
 - [Mastering Ethereum Book](https://github.com/ethereumbook/ethereumbook) 
 
+
+## Languages/Frameworks used in this repo
+Rust
+Solidity
+Forge
+
 ## Getting Started
 
 _Note: If you're on MacOS, make sure you've installed Xcode and its developer tools by typing `xcode-select --install`._
